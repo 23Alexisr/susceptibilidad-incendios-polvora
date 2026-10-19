@@ -1,0 +1,23 @@
+# Entorno virtual
+.venv/
+
+# Credenciales y configuración local
+.env
+
+# Datos (pesados, no van al repositorio; se regeneran con los scripts de src/)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema operativo
+Thumbs.db
+
+.claude/

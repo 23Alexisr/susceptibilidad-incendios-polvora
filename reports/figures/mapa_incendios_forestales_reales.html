@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Map</title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "e26ff81e96fe4524a61e2a9f37b12de8": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "500px"
+      }
+    },
+    "0582b643c61c4da9a0124dae3b1fd2b1": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "880px",
+        "width": "100%"
+      }
+    },
+    "58971379a3fc4d31b07ed504cf318bc4": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {}
+    },
+    "e85e1772437f4256bf5fb8fa6f7506a4": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "cursor": "move"
+      }
+    },
+    "832ef3022c33499c933a5b129b0a8a49": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+        "base": true,
+        "max_zoom": 30,
+        "min_zoom": 1,
+        "name": "Esri.WorldImagery",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+      }
+    },
+    "b87f31c9f6f44f9aaf5057cbb4d33ce7": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {}
+    },
+    "da280cbbb5cc4a1ba7db8c27f5d3f5e0": {
+      "model_name": "LeafletMapModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "_dom_classes": [],
+        "center": [
+          -8.015616864090422,
+          -76.79897293720408
+        ],
+        "controls": [
+          "IPY_MODEL_755756726edf4454a70b487e4773bb58",
+          "IPY_MODEL_8045b4c4c35f403384299b2e5be9fd48",
+          "IPY_MODEL_ed61468668794fd6ad0cf7645c46853c",
+          "IPY_MODEL_80e79088e4884f2d8b4c3d39ad8da325",
+          "IPY_MODEL_e230373d993a4c63bc30f959a1cc141e",
+          "IPY_MODEL_7d8d7caf319d4b699681dbaf9bda780f",
+          "IPY_MODEL_416caa91d75244e5a9f4fd811e8a71e7",
+          "IPY_MODEL_413d91fe386a4193a83e7ef64a9e6672",
+          "IPY_MODEL_38a3e82ec0bd4ad0ac38821f34fd88d4"
+        ],
+        "crs": {
+          "name": "EPSG3857",
+          "custom": false
+        },
+        "default_style": "IPY_MODEL_58971379a3fc4d31b07ed504cf318bc4",
+        "dragging_style": "IPY_MODEL_e85e1772437f4256bf5fb8fa6f7506a4",
+        "layers": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "IPY_MODEL_6826aa6fabbb4036aeaec5bf5fefa024",
+          "IPY_MODEL_5268473b202946d39fc43cba4933c1c0"
+        ],
+        "layout": "IPY_MODEL_0582b643c61c4da9a0124dae3b1fd2b1",
+        "max_zoom": 24.0,
+        "options": [
+          "bounce_at_zoom_limits",
+          "box_zoom",
+          "center",
+          "close_popup_on_click",
+          "double_click_zoom",
+          "dragging",
+          "fullscreen",
+          "inertia",
+          "inertia_deceleration",
+          "inertia_max_speed",
+          "interpolation",
+          "keyboard",
+          "keyboard_pan_offset",
+          "keyboard_zoom_offset",
+          "max_zoom",
+          "min_zoom",
+          "prefer_canvas",
+          "scroll_wheel_zoom",
+          "tap",
+          "tap_tolerance",
+          "touch_zoom",
+          "world_copy_jump",
+          "zoom",
+          "zoom_animation_threshold",
+          "zoom_delta",
+          "zoom_snap"
+        ],
+        "panes": {},
+        "scroll_wheel_zoom": true,
+        "style": "IPY_MODEL_b87f31c9f6f44f9aaf5057cbb4d33ce7",
+        "zoom": 11.0
+      }
+    },
+    "3183da0c333a4c6eb7973352a0eda339": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "grid_gap": "0px 10px",
+        "grid_template_columns": "auto auto",
+        "overflow": "visible"
+      }
+    },
+    "772310c0631449cdaf324bce36ec26ee": {
+      "model_name": "GridBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_decc50b7f792463a80bbe6c59455a181",
+          "IPY_MODEL_da1c345b4bbc413b8f0e6727366d51df"
+        ],
+        "layout": "IPY_MODEL_3183da0c333a4c6eb7973352a0eda339"
+      }
+    },
+    "755756726edf4454a70b487e4773bb58": {
+      "model_name": "LeafletWidgetControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "transparent_bg"
+        ],
+        "position": "topright",
+        "transparent_bg": true,
+        "widget": "IPY_MODEL_772310c0631449cdaf324bce36ec26ee"
+      }
+    },
+    "05483ca5b6514fa6aae865e825a34fca": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "b79b4852c5904a2ab404f77528632692": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_05483ca5b6514fa6aae865e825a34fca"
+      }
+    },
+    "8045b4c4c35f403384299b2e5be9fd48": {
+      "model_name": "LeafletWidgetControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "transparent_bg"
+        ],
+        "transparent_bg": true,
+        "widget": "IPY_MODEL_b79b4852c5904a2ab404f77528632692"
+      }
+    },
+    "ed61468668794fd6ad0cf7645c46853c": {
+      "model_name": "LeafletZoomControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "zoom_in_text",
+          "zoom_in_title",
+          "zoom_out_text",
+          "zoom_out_title"
+        ]
+      }
+    },
+    "80e79088e4884f2d8b4c3d39ad8da325": {
+      "model_name": "LeafletFullScreenControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position"
+        ]
+      }
+    },
+    "e230373d993a4c63bc30f959a1cc141e": {
+      "model_name": "LeafletDrawControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "circle": {},
+        "circlemarker": {},
+        "data": [],
+        "marker": {
+          "shapeOptions": {
+            "color": "#3388ff"
+          }
+        },
+        "options": [
+          "position"
+        ],
+        "polygon": {
+          "shapeOptions": {}
+        },
+        "polyline": {
+          "shapeOptions": {}
+        },
+        "rectangle": {
+          "shapeOptions": {
+            "color": "#3388ff"
+          }
+        }
+      }
+    },
+    "7d8d7caf319d4b699681dbaf9bda780f": {
+      "model_name": "LeafletScaleControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "imperial",
+          "max_width",
+          "metric",
+          "position",
+          "update_when_idle"
+        ],
+        "position": "bottomleft"
+      }
+    },
+    "416caa91d75244e5a9f4fd811e8a71e7": {
+      "model_name": "LeafletMeasureControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "_custom_units": {},
+        "active_color": "orange",
+        "options": [
+          "active_color",
+          "capture_z_index",
+          "completed_color",
+          "popup_options",
+          "position",
+          "primary_area_unit",
+          "primary_length_unit",
+          "secondary_area_unit",
+          "secondary_length_unit"
+        ],
+        "popup_options": {
+          "className": "leaflet-measure-resultpopup",
+          "autoPanPadding": [
+            10,
+            10
+          ]
+        },
+        "position": "bottomleft",
+        "primary_length_unit": "kilometers"
+      }
+    },
+    "a969796fa4ca482ab371e7278c90a6e6": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "decc50b7f792463a80bbe6c59455a181": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_fc6eb853af6442e0bb123c93aafa9686",
+          "IPY_MODEL_411b107334b24f91873c148eadb96b6c",
+          "IPY_MODEL_3031f368d75544c69338bf7196b39686",
+          "IPY_MODEL_bfd0580830434250a0fb6179e25a9053",
+          "IPY_MODEL_7d10d0aeb82c42688428975aca849536",
+          "IPY_MODEL_9ffb4f1008944b388066bd5526de2faf"
+        ],
+        "layout": "IPY_MODEL_a969796fa4ca482ab371e7278c90a6e6"
+      }
+    },
+    "74ebf6c6a5994bb4914be67fee714922": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "732062c97f6948af8fb5b9854d5af6c9": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_74ebf6c6a5994bb4914be67fee714922",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "c9686e5dbd144e6e8f6270053139552c": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_732062c97f6948af8fb5b9854d5af6c9",
+          "opacity"
+        ]
+      }
+    },
+    "c816905cd3254a589d987df76b021f17": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_732062c97f6948af8fb5b9854d5af6c9",
+          "visible"
+        ]
+      }
+    },
+    "9b62a29e565445ba935e97784910bfac": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3237dc690b9a473fbf179b37eaba8cad": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "point_scan",
+        "layout": "IPY_MODEL_9b62a29e565445ba935e97784910bfac",
+        "tooltip_text": "Inspector"
+      }
+    },
+    "bd94e99f58bd4594969ab0b8c37a6471": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "da983d5a1c5e4d1687c7537cc598e8e9": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "bar_chart",
+        "layout": "IPY_MODEL_bd94e99f58bd4594969ab0b8c37a6471",
+        "tooltip_text": "Plotting"
+      }
+    },
+    "c9f09f14fddd4abfbe459b0b56094f30": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "51d8199f323c496b98e67c13e1f3f798": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "history",
+        "layout": "IPY_MODEL_c9f09f14fddd4abfbe459b0b56094f30",
+        "tooltip_text": "Create timelapse"
+      }
+    },
+    "32e88f64d07b4f8bb055afdd86ac1865": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "c05292e7bd5443ca8d51e86f6bf1a1bc": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "map",
+        "layout": "IPY_MODEL_32e88f64d07b4f8bb055afdd86ac1865",
+        "tooltip_text": "Change basemap"
+      }
+    },
+    "fd15d0c52251450a957a76308e9866fd": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "88ed478b82be43c1984113666e560864": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "code",
+        "layout": "IPY_MODEL_fd15d0c52251450a957a76308e9866fd",
+        "tooltip_text": "Convert Earth Engine JavaScript to Python"
+      }
+    },
+    "6c278a954f9f41b092b6dc5c8ea810e1": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e22d0b100c424735830e8ee4349f7070": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "ink_eraser",
+        "layout": "IPY_MODEL_6c278a954f9f41b092b6dc5c8ea810e1",
+        "tooltip_text": "Remove all drawn features"
+      }
+    },
+    "04da3dad64a540e095108a84a0605894": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "151f9f60024044f997198e1dddddebb3": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "upload",
+        "layout": "IPY_MODEL_04da3dad64a540e095108a84a0605894",
+        "tooltip_text": "Open local vector/raster data"
+      }
+    },
+    "0464f048ebf04e6cb3d68ded8578d819": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "26960787140e483782586ba90f5cca52": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "manufacturing",
+        "layout": "IPY_MODEL_0464f048ebf04e6cb3d68ded8578d819",
+        "tooltip_text": "WhiteboxTools for local geoprocessing"
+      }
+    },
+    "dea45acedf12415a93250370f99d9b46": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "53c4413b087e420bb69155c6a79152a6": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "dns",
+        "layout": "IPY_MODEL_dea45acedf12415a93250370f99d9b46",
+        "tooltip_text": "GEE Toolbox for cloud computing"
+      }
+    },
+    "2aef9f0ec3b74b88a8464b22f566b023": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "37beb0a9f35f486d9eac257b91ce29aa": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "fast_forward",
+        "layout": "IPY_MODEL_2aef9f0ec3b74b88a8464b22f566b023",
+        "tooltip_text": "Activate timeslider"
+      }
+    },
+    "79201a4ec5dd406b84331debdf6e04b4": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "45c089700b57412287349fda4253e5d1": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "pan_tool_alt",
+        "layout": "IPY_MODEL_79201a4ec5dd406b84331debdf6e04b4",
+        "tooltip_text": "Collect training samples"
+      }
+    },
+    "7c2e371a476041c09ddf21d2f4648d0f": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "75bfd6883cfa44759333c9760eb0e946": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "show_chart",
+        "layout": "IPY_MODEL_7c2e371a476041c09ddf21d2f4648d0f",
+        "tooltip_text": "Creating and plotting transects"
+      }
+    },
+    "e9cc5b4f63794940ba4d95d80e5f1460": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "73822c746e0d4eeaac30ee6d5d6d815c": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "shuffle",
+        "layout": "IPY_MODEL_e9cc5b4f63794940ba4d95d80e5f1460",
+        "tooltip_text": "Sankey plots"
+      }
+    },
+    "d88f1fc8c29e498989cb5e23b4773b93": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "704d927a42d149b29083c69783ff9abb": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "image",
+        "layout": "IPY_MODEL_d88f1fc8c29e498989cb5e23b4773b93",
+        "tooltip_text": "Planet imagery"
+      }
+    },
+    "dbe72227b7c14cf589d588360394903b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "41a3e988b43e4cdd82f1922ed35dfddc": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "target",
+        "layout": "IPY_MODEL_dbe72227b7c14cf589d588360394903b",
+        "tooltip_text": "Get COG/STAC pixel value"
+      }
+    },
+    "3f7867e72e7a40f5be26eed9e0f11f16": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "244f7eba7055434fa8fd3bb5d704f8bc": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "question_mark",
+        "layout": "IPY_MODEL_3f7867e72e7a40f5be26eed9e0f11f16",
+        "tooltip_text": "Get help"
+      }
+    },
+    "b5a61c66b3c0448e842d6f9bd8a87616": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "da1c345b4bbc413b8f0e6727366d51df": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [],
+        "extra_tools": [
+          "IPY_MODEL_e22d0b100c424735830e8ee4349f7070",
+          "IPY_MODEL_151f9f60024044f997198e1dddddebb3",
+          "IPY_MODEL_26960787140e483782586ba90f5cca52",
+          "IPY_MODEL_53c4413b087e420bb69155c6a79152a6",
+          "IPY_MODEL_37beb0a9f35f486d9eac257b91ce29aa",
+          "IPY_MODEL_45c089700b57412287349fda4253e5d1",
+          "IPY_MODEL_75bfd6883cfa44759333c9760eb0e946",
+          "IPY_MODEL_73822c746e0d4eeaac30ee6d5d6d815c",
+          "IPY_MODEL_704d927a42d149b29083c69783ff9abb",
+          "IPY_MODEL_41a3e988b43e4cdd82f1922ed35dfddc",
+          "IPY_MODEL_244f7eba7055434fa8fd3bb5d704f8bc"
+        ],
+        "layout": "IPY_MODEL_b5a61c66b3c0448e842d6f9bd8a87616",
+        "main_tools": [
+          "IPY_MODEL_3237dc690b9a473fbf179b37eaba8cad",
+          "IPY_MODEL_da983d5a1c5e4d1687c7537cc598e8e9",
+          "IPY_MODEL_51d8199f323c496b98e67c13e1f3f798",
+          "IPY_MODEL_c05292e7bd5443ca8d51e86f6bf1a1bc",
+          "IPY_MODEL_88ed478b82be43c1984113666e560864",
+          "IPY_MODEL_38eaf17866f144e9915307b98bbbccf4"
+        ]
+      }
+    },
+    "01617d20b5534a759b84fd41179aded3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "38eaf17866f144e9915307b98bbbccf4": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "icon": "add",
+        "layout": "IPY_MODEL_01617d20b5534a759b84fd41179aded3",
+        "tooltip_text": "Expand toolbar"
+      }
+    },
+    "413d91fe386a4193a83e7ef64a9e6672": {
+      "model_name": "LeafletAttributionControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "prefix"
+        ],
+        "position": "bottomright"
+      }
+    },
+    "78f32cf79b7641d4b40c428610a88ada": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Google Earth Engine",
+        "max_zoom": 24,
+        "name": "Limite distrito Polvora",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://earthengine.googleapis.com/v1/projects/tesis-tocache-firms/maps/cef7a9d99fd0ba68ba3585d3374b8af5-578dc1e46aaf87ecab551b03f35492fe/tiles/{z}/{x}/{y}"
+      }
+    },
+    "6ac3507e1c3e463384cdeb14fc6f7e71": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7f7c467aab0041a88efec35883022a8c": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_6ac3507e1c3e463384cdeb14fc6f7e71",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "bd92e9d7341f4ae7a0b91414d5b86ccb": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_7f7c467aab0041a88efec35883022a8c",
+          "opacity"
+        ]
+      }
+    },
+    "dcbe834382aa463faa83a0737a73f035": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_7f7c467aab0041a88efec35883022a8c",
+          "visible"
+        ]
+      }
+    },
+    "a4dd9a525a5149f088b0b4fbbe6d449e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "19bf25d9e2714121b417fcbcc05c50f2": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_a4dd9a525a5149f088b0b4fbbe6d449e",
+        "name": "Limite distrito Polvora"
+      }
+    },
+    "48ee043ee4fc4434b0ecddf1342f95ff": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_19bf25d9e2714121b417fcbcc05c50f2",
+          "opacity"
+        ]
+      }
+    },
+    "fb2893eb7bd14afca87b61b4026fba17": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_19bf25d9e2714121b417fcbcc05c50f2",
+          "visible"
+        ]
+      }
+    },
+    "f91fa2e06fc84db9aef5b2111854e12a": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Google Earth Engine",
+        "max_zoom": 24,
+        "name": "Incendios 2001-2011 (solo MODIS) (n=194)",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://earthengine.googleapis.com/v1/projects/tesis-tocache-firms/maps/0bf10809aa6f51ae39b0330fe4b1f3e4-b3f5ea2bd2f1667503fd5ce4dbbd0166/tiles/{z}/{x}/{y}"
+      }
+    },
+    "8c978d0f234e440a99bfa98d74f19775": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e1b8c9477aa0422b9839f546769daea8": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_8c978d0f234e440a99bfa98d74f19775",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "a159a21bdd6f474a8b2fde240c215e10": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_e1b8c9477aa0422b9839f546769daea8",
+          "opacity"
+        ]
+      }
+    },
+    "10e94b588d6a43ba9f86c4aa175ca0c8": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_e1b8c9477aa0422b9839f546769daea8",
+          "visible"
+        ]
+      }
+    },
+    "0475deff6bb9456fa48415220221b2b1": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "6cd1a6e934c14d54ac0046069b976e16": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_0475deff6bb9456fa48415220221b2b1",
+        "name": "Limite distrito Polvora"
+      }
+    },
+    "2693eaf8736d4292a40630f79405e88f": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_6cd1a6e934c14d54ac0046069b976e16",
+          "opacity"
+        ]
+      }
+    },
+    "267ae1ce0ce24d509f99982da30b7d85": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_6cd1a6e934c14d54ac0046069b976e16",
+          "visible"
+        ]
+      }
+    },
+    "cda414f2b46d4f319d46f9eafe2617c7": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "80debed69301426f9444509cb7d08fd1": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_cda414f2b46d4f319d46f9eafe2617c7",
+        "name": "Incendios 2001-2011 (solo MODIS) (n=194)"
+      }
+    },
+    "e16ee8b2a29a491db613463a930b97d9": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_80debed69301426f9444509cb7d08fd1",
+          "opacity"
+        ]
+      }
+    },
+    "8517bc5ea1d143a5a71228298ef1b620": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_80debed69301426f9444509cb7d08fd1",
+          "visible"
+        ]
+      }
+    },
+    "9efbf329fb284752b2dce1bbe43f8aa7": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Google Earth Engine",
+        "max_zoom": 24,
+        "name": "Incendios 2012-2016 (n=1143)",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://earthengine.googleapis.com/v1/projects/tesis-tocache-firms/maps/f804fa2f918ac6c25fdad09381ad139a-0fd1ef390c8f2979233f458a0786dc4e/tiles/{z}/{x}/{y}"
+      }
+    },
+    "426167e1e1e54689a4c3b6ff156c4b4f": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "522267cd5ffa45f09eb55e1a9be377a2": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_426167e1e1e54689a4c3b6ff156c4b4f",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "911bbe2d29a042abb461d190cbf56a02": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_522267cd5ffa45f09eb55e1a9be377a2",
+          "opacity"
+        ]
+      }
+    },
+    "2a3f400115bd4cce96306831f050dc25": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_522267cd5ffa45f09eb55e1a9be377a2",
+          "visible"
+        ]
+      }
+    },
+    "bd8a02f5a4114646b9f508b8b6fc7755": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "08fe844a00aa4977a032be0c543c057c": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_bd8a02f5a4114646b9f508b8b6fc7755",
+        "name": "Limite distrito Polvora"
+      }
+    },
+    "ddac250daeab495db42abf7fb3980082": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_08fe844a00aa4977a032be0c543c057c",
+          "opacity"
+        ]
+      }
+    },
+    "bab18fd7561140ec9567691f0b8ae994": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_08fe844a00aa4977a032be0c543c057c",
+          "visible"
+        ]
+      }
+    },
+    "1a2a5815f2b9499c92a0e531f3fbf9c2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "c429511d7a614e02946ef7cd2846cbdb": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_1a2a5815f2b9499c92a0e531f3fbf9c2",
+        "name": "Incendios 2001-2011 (solo MODIS) (n=194)"
+      }
+    },
+    "e5f3ce93b2fb497ea48211861a8680cc": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_c429511d7a614e02946ef7cd2846cbdb",
+          "opacity"
+        ]
+      }
+    },
+    "2c938c462c424c87919707c700a14942": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_c429511d7a614e02946ef7cd2846cbdb",
+          "visible"
+        ]
+      }
+    },
+    "a4972312988a4993ba56bf5740688491": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fbc59a3887e9415794a135699cb417fd": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_a4972312988a4993ba56bf5740688491",
+        "name": "Incendios 2012-2016 (n=1143)"
+      }
+    },
+    "b094d0d36cd8417185558789a2b1075c": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_fbc59a3887e9415794a135699cb417fd",
+          "opacity"
+        ]
+      }
+    },
+    "f3e615119b1743d295486a0ba4e756bb": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_fbc59a3887e9415794a135699cb417fd",
+          "visible"
+        ]
+      }
+    },
+    "6826aa6fabbb4036aeaec5bf5fefa024": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Google Earth Engine",
+        "max_zoom": 24,
+        "name": "Incendios 2017-2021 (n=863)",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://earthengine.googleapis.com/v1/projects/tesis-tocache-firms/maps/5bcfa29778a8955e52973e608e68e3ba-fea64dc768461c9334c3e9397f23454c/tiles/{z}/{x}/{y}"
+      }
+    },
+    "5d032c013195400eaa08dff81fca6103": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "984ac824a8924272977e26b28d5c489b": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_5d032c013195400eaa08dff81fca6103",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "e17118a95e7a406886414ff32716873d": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_984ac824a8924272977e26b28d5c489b",
+          "opacity"
+        ]
+      }
+    },
+    "066ea540e22d44d693cabad95e7206fd": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_984ac824a8924272977e26b28d5c489b",
+          "visible"
+        ]
+      }
+    },
+    "0b511904647449fabd116f9b8f54ad01": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "2efd6cd977fd4352b302916d7fd290c2": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_0b511904647449fabd116f9b8f54ad01",
+        "name": "Limite distrito Polvora"
+      }
+    },
+    "d493d731d1b04b1b9aae2518578a27e0": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_2efd6cd977fd4352b302916d7fd290c2",
+          "opacity"
+        ]
+      }
+    },
+    "257e2409109741a9ba22a598b9424901": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_2efd6cd977fd4352b302916d7fd290c2",
+          "visible"
+        ]
+      }
+    },
+    "000f7c94e4f44c599aeb8fa4a9725532": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "a27787158f3545d499a2a86adeae6460": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_000f7c94e4f44c599aeb8fa4a9725532",
+        "name": "Incendios 2001-2011 (solo MODIS) (n=194)"
+      }
+    },
+    "bd2e54c3c3c943c0a304090d7d82dab0": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_a27787158f3545d499a2a86adeae6460",
+          "opacity"
+        ]
+      }
+    },
+    "c7a2131d669a4ede99dfaf97bba446da": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_a27787158f3545d499a2a86adeae6460",
+          "visible"
+        ]
+      }
+    },
+    "c646396934ae4a70ac8a5ecec72a5174": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "94eaf38cfcbb4fbebd1b65e241fb7fd9": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_c646396934ae4a70ac8a5ecec72a5174",
+        "name": "Incendios 2012-2016 (n=1143)"
+      }
+    },
+    "0b94c3746d0c46178cd24e8c68d53a44": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_94eaf38cfcbb4fbebd1b65e241fb7fd9",
+          "opacity"
+        ]
+      }
+    },
+    "3eea94a437694eb180eef828a52f6891": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_94eaf38cfcbb4fbebd1b65e241fb7fd9",
+          "visible"
+        ]
+      }
+    },
+    "8e578e7c22ec495dbfdb14a7584d85d2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "ba9a0511c4364c3899d284e96253233f": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_8e578e7c22ec495dbfdb14a7584d85d2",
+        "name": "Incendios 2017-2021 (n=863)"
+      }
+    },
+    "cae259645c454835850d3264f9a414ce": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_6826aa6fabbb4036aeaec5bf5fefa024",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_ba9a0511c4364c3899d284e96253233f",
+          "opacity"
+        ]
+      }
+    },
+    "30253a7793a64de89959ae8ba8472706": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_6826aa6fabbb4036aeaec5bf5fefa024",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_ba9a0511c4364c3899d284e96253233f",
+          "visible"
+        ]
+      }
+    },
+    "5268473b202946d39fc43cba4933c1c0": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "Google Earth Engine",
+        "max_zoom": 24,
+        "name": "Incendios 2022-2026 (n=425)",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": [],
+        "url": "https://earthengine.googleapis.com/v1/projects/tesis-tocache-firms/maps/7ee6bd1ad8f67a94f76e3af493a5e8f3-bb85387a7971c8d554e0d2fd05c28f6b/tiles/{z}/{x}/{y}"
+      }
+    },
+    "0bf3776060d045beb5678621af7e0159": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fc6eb853af6442e0bb123c93aafa9686": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_0bf3776060d045beb5678621af7e0159",
+        "name": "Esri.WorldImagery"
+      }
+    },
+    "32142390ef6d4d06bb721d49db32ae76": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_fc6eb853af6442e0bb123c93aafa9686",
+          "opacity"
+        ]
+      }
+    },
+    "ceca4b4dc03748ba8d3c21c0ca156922": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_832ef3022c33499c933a5b129b0a8a49",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_fc6eb853af6442e0bb123c93aafa9686",
+          "visible"
+        ]
+      }
+    },
+    "b8dbcc39bbf748d3bd31db740a9bd22b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "411b107334b24f91873c148eadb96b6c": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_b8dbcc39bbf748d3bd31db740a9bd22b",
+        "name": "Limite distrito Polvora"
+      }
+    },
+    "61cb38fba8d841c2916da0dd418beb39": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_411b107334b24f91873c148eadb96b6c",
+          "opacity"
+        ]
+      }
+    },
+    "faa4e19bc02545feb2da91822d9d325b": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_78f32cf79b7641d4b40c428610a88ada",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_411b107334b24f91873c148eadb96b6c",
+          "visible"
+        ]
+      }
+    },
+    "eb5e94e1dab646fcbfe8a8f13042f205": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3031f368d75544c69338bf7196b39686": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_eb5e94e1dab646fcbfe8a8f13042f205",
+        "name": "Incendios 2001-2011 (solo MODIS) (n=194)"
+      }
+    },
+    "713d1ad868c2437398471a10c41ee1fb": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_3031f368d75544c69338bf7196b39686",
+          "opacity"
+        ]
+      }
+    },
+    "62b361f962b148429d2b4c0459209c22": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f91fa2e06fc84db9aef5b2111854e12a",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_3031f368d75544c69338bf7196b39686",
+          "visible"
+        ]
+      }
+    },
+    "78de5da8256a41f8ba22410f3857387d": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "bfd0580830434250a0fb6179e25a9053": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_78de5da8256a41f8ba22410f3857387d",
+        "name": "Incendios 2012-2016 (n=1143)"
+      }
+    },
+    "ef0f8247e43b43bebfe5a0ed198f5c72": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_bfd0580830434250a0fb6179e25a9053",
+          "opacity"
+        ]
+      }
+    },
+    "5dce3313245e4d55b6361b66b4b94f95": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_9efbf329fb284752b2dce1bbe43f8aa7",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_bfd0580830434250a0fb6179e25a9053",
+          "visible"
+        ]
+      }
+    },
+    "a8f9b92abb73412a927afacb3c7b8a8a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7d10d0aeb82c42688428975aca849536": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_a8f9b92abb73412a927afacb3c7b8a8a",
+        "name": "Incendios 2017-2021 (n=863)"
+      }
+    },
+    "541ec3b945e841e18ddfc8b1c015ffd6": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_6826aa6fabbb4036aeaec5bf5fefa024",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_7d10d0aeb82c42688428975aca849536",
+          "opacity"
+        ]
+      }
+    },
+    "c28bd1e1f48447f3b767a3ede31289e6": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_6826aa6fabbb4036aeaec5bf5fefa024",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_7d10d0aeb82c42688428975aca849536",
+          "visible"
+        ]
+      }
+    },
+    "e3be77c388894356be919861a8348089": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "9ffb4f1008944b388066bd5526de2faf": {
+      "model_name": "AnyModel",
+      "model_module": "anywidget",
+      "model_module_version": "~0.11.*",
+      "state": {
+        "_dom_classes": [
+          "geemap-light"
+        ],
+        "layout": "IPY_MODEL_e3be77c388894356be919861a8348089",
+        "name": "Incendios 2022-2026 (n=425)"
+      }
+    },
+    "6851225a06954e35b78d65a524ea086e": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_5268473b202946d39fc43cba4933c1c0",
+          "opacity"
+        ],
+        "target": [
+          "IPY_MODEL_9ffb4f1008944b388066bd5526de2faf",
+          "opacity"
+        ]
+      }
+    },
+    "675d43b08b3c4b8abed48f072ba66c5b": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_5268473b202946d39fc43cba4933c1c0",
+          "visible"
+        ],
+        "target": [
+          "IPY_MODEL_9ffb4f1008944b388066bd5526de2faf",
+          "visible"
+        ]
+      }
+    },
+    "38a3e82ec0bd4ad0ac38821f34fd88d4": {
+      "model_name": "LeafletLayersControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "collapsed",
+          "position"
+        ],
+        "position": "topright"
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "da280cbbb5cc4a1ba7db8c27f5d3f5e0"}
+</script>
+
+</body>
+</html>

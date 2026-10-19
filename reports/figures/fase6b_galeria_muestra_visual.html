@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Muestra visual — eventos de incendio forestal (Fase 6b)</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #1a1a1a; color: #eee; margin: 0; padding: 24px; }
+  h1 { font-size: 1.4rem; }
+  p.nota { color: #aaa; max-width: 800px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; margin-top: 20px; }
+  .tarjeta { background: #262626; border-radius: 8px; padding: 12px; }
+  .cabecera { font-size: 0.85rem; margin-bottom: 8px; color: #ccc; }
+  .imagenes { display: flex; gap: 8px; }
+  .col { flex: 1; }
+  .etiqueta { font-size: 0.75rem; color: #888; margin-bottom: 4px; text-transform: uppercase; }
+  img { width: 100%; border-radius: 4px; display: block; background: #000; }
+  .sin_imagen { width: 100%; aspect-ratio: 1; background: #333; border-radius: 4px; display: flex;
+                 align-items: center; justify-content: center; color: #666; font-size: 0.8rem; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>Muestra visual — 50 eventos de incendio forestal (definición extendida, con VIIRS, 2018-2025)</h1>
+  <p class="nota">
+    Composite Sentinel-2 (bandas B12-SWIR2/B8-NIR/B4-Rojo, resalta cicatrices de quema en tonos marrón/rojizo
+    sobre vegetación sana en verde). "Antes" = mediana de imágenes hasta 60-270 días previos al evento.
+    "Después" = mediana de imágenes 60-365 días después del fin del evento (margen para que el humo se disipe).
+    Revisa si el patrón visual (cicatriz de quema, apertura de dosel) es consistente con la clasificación de la Fase 3b.
+  </p>
+  <div class="grid">
+    
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2842</b> — 2018-09-11 a 2018-09-11
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02842_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3251</b> — 2020-08-28 a 2020-08-28
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03251_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03251_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 1176</b> — 2020-10-20 a 2020-10-20
+            · 4 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_01176_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_01176_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3916</b> — 2024-09-12 a 2024-09-12
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03916_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03916_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3641</b> — 2022-09-20 a 2022-09-20
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03641_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03641_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3668</b> — 2022-12-24 a 2022-12-24
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03668_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03668_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 1332</b> — 2025-08-28 a 2025-08-28
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_01332_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_01332_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3612</b> — 2022-09-02 a 2022-09-02
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03612_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03612_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2767</b> — 2018-08-03 a 2018-08-03
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02767_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3948</b> — 2024-10-19 a 2024-10-19
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03948_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03948_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3594</b> — 2022-08-22 a 2022-08-22
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03594_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03594_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2799</b> — 2018-08-29 a 2018-08-29
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02799_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 4036</b> — 2025-09-17 a 2025-09-17
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_04036_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_04036_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2781</b> — 2018-08-24 a 2018-08-24
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02781_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3021</b> — 2019-08-26 a 2019-08-26
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03021_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03021_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3427</b> — 2021-08-16 a 2021-08-16
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03427_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03427_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3070</b> — 2019-09-16 a 2019-09-16
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03070_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03070_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3120</b> — 2020-04-21 a 2020-04-21
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03120_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03120_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 4065</b> — 2025-11-28 a 2025-11-28
+            · 6 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_04065_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_04065_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3749</b> — 2023-08-22 a 2023-08-22
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03749_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03749_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 1253</b> — 2023-06-23 a 2023-06-23
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_01253_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_01253_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3024</b> — 2019-08-29 a 2019-08-29
+            · 4 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03024_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03024_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 4011</b> — 2025-08-22 a 2025-08-22
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_04011_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_04011_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3817</b> — 2023-11-08 a 2023-11-08
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03817_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03817_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2976</b> — 2019-08-05 a 2019-08-05
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_02976_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02976_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2858</b> — 2018-09-13 a 2018-09-13
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02858_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3053</b> — 2019-09-08 a 2019-09-08
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03053_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03053_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2751</b> — 2018-07-02 a 2018-07-02
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02751_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2783</b> — 2018-08-25 a 2018-08-25
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_02783_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02783_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3321</b> — 2020-10-09 a 2020-10-09
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03321_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03321_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3279</b> — 2020-08-29 a 2020-08-29
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03279_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03279_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2840</b> — 2018-09-10 a 2018-09-10
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02840_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3295</b> — 2020-09-12 a 2020-09-12
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03295_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03295_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3551</b> — 2022-07-12 a 2022-07-12
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03551_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03551_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2775</b> — 2018-08-15 a 2018-08-15
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02775_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3301</b> — 2020-09-13 a 2020-09-13
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03301_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03301_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2762</b> — 2018-07-27 a 2018-07-27
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02762_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3638</b> — 2022-09-19 a 2022-09-19
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03638_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03638_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2869</b> — 2018-09-22 a 2018-09-22
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02869_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3773</b> — 2023-09-02 a 2023-09-02
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03773_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03773_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 2863</b> — 2018-09-14 a 2018-09-14
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <div class="sin_imagen">Sin imagen (nubosidad)</div>
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_02863_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3765</b> — 2023-08-27 a 2023-08-27
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03765_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03765_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3872</b> — 2024-08-17 a 2024-08-17
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03872_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03872_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3101</b> — 2019-11-21 a 2019-11-21
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03101_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03101_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3027</b> — 2019-08-29 a 2019-08-29
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03027_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03027_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 1232</b> — 2022-08-28 a 2022-08-28
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_01232_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_01232_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3260</b> — 2020-08-28 a 2020-08-28
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03260_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <div class="sin_imagen">Sin imagen</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3635</b> — 2022-09-18 a 2022-09-18
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03635_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03635_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3028</b> — 2019-08-29 a 2019-08-29
+            · 1 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03028_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03028_despues.png">
+            </div>
+          </div>
+        </div>
+        
+        <div class="tarjeta">
+          <div class="cabecera">
+            <b>Evento 3465</b> — 2021-09-15 a 2021-09-15
+            · 2 detección(es) · incendio_forestal_no_estricto
+          </div>
+          <div class="imagenes">
+            <div class="col">
+              <div class="etiqueta">Antes</div>
+              <img src="fase6b_muestra_visual/evento_03465_antes.png">
+            </div>
+            <div class="col">
+              <div class="etiqueta">Después</div>
+              <img src="fase6b_muestra_visual/evento_03465_despues.png">
+            </div>
+          </div>
+        </div>
+        
+  </div>
+</body>
+</html>
