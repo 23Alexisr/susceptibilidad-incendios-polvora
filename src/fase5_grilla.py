@@ -2,16 +2,7 @@
 Fase 5 (paso 1) - Construye la grilla de celdas de 1 km x 1 km sobre el
 distrito de estudio (Polvora).
 
-Por que UTM 18S (EPSG:32718): para que las celdas sean realmente de 1 km x
-1 km necesitamos trabajar en un sistema de coordenadas metrico (proyectado),
-no en grados (EPSG:4326, donde 1 grado no equivale a una distancia fija).
-Polvora esta centrado alrededor de 76.6°W, dentro de la zona UTM 18S
-(72°W-78°W), la misma zona que ya usamos en la Fase 1 para calcular el area
-del distrito.
 
-Criterio de inclusion de celdas: se conserva una celda si su CENTROIDE cae
-dentro del poligono del distrito. Es el criterio estandar para grillas de
-analisis (evita celdas fantasma que solo tocan una esquina del distrito).
 """
 import geopandas as gpd
 import numpy as np
@@ -30,7 +21,6 @@ def main() -> None:
 
     minx, miny, maxx, maxy = geom_distrito.bounds
     # Alineamos el origen de la grilla a multiplos de 1000 m para que sea
-    # reproducible (no depende del bounding box exacto del distrito).
     minx = np.floor(minx / TAMANO_CELDA_M) * TAMANO_CELDA_M
     miny = np.floor(miny / TAMANO_CELDA_M) * TAMANO_CELDA_M
 

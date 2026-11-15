@@ -5,26 +5,6 @@ antes 2024). Version paralela de fase7_construir_tabla.py: NO modifica
 fase7_tabla_modelado.parquet (C3, 2012-2024), produce
 fase7_tabla_modelado_c4.parquet aparte.
 
-Fuentes que CAMBIAN respecto al pipeline C3 original de la Fase 7:
-  - clase_mapbiomas, pct_bosque_1km: fase5_predictores_anuales_c4.csv
-    (MapBiomas C4, anios 2011-2024, ver fase5_anuales_c4.py).
-  - ndvi: fase7_ndvi_mensual.csv (2011-2024, sin cambios) +
-    fase7_ndvi_mensual_2025_c4.csv (2025 nuevo, ver fase7_ndvi_mensual_c4.py).
-  - precip_mm, temp_max_c: fase5_predictores_mensuales.csv (2000-2024, sin
-    cambios) + fase5_predictores_mensuales_2025_c4.csv (2025 nuevo).
-  - Etiquetas (eventos de incendio forestal): fase3b_eventos_c4.csv
-    (reclasificado con C4, periodo de deteccion FIRMS hasta 2025-12-31).
-
-Fuentes que NO cambian (estaticas, no dependen de MapBiomas ni del periodo):
-  - elevacion, pendiente: fase5_predictores_estaticos.csv
-  - dist_carretera_m: fase7_dist_carretera.csv (MTC, snapshot dic-2018)
-  - dist_zona_residencial_m: fase7_dist_centro_poblado.csv (INEI, snapshot)
-
-Imputacion de NDVI: IDENTICA metodologia a la decision del usuario para la
-version C3 (climatologia celda+mes, calculada SOLO con los anios de
-entrenamiento 2012-2021 -- el enunciado del encargo de C4 confirmo
-explicitamente mantener esto sin cambios, aunque el conjunto de prueba
-ahora sea 2022-2025 en vez de 2022-2024).
 """
 import geopandas as gpd
 import numpy as np

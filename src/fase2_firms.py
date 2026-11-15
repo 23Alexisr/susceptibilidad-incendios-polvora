@@ -1,39 +1,6 @@
 """
 Fase 2 - Detecciones de calor NASA FIRMS (VIIRS S-NPP y MODIS) para Peru.
 
-Por que el endpoint "country" no se uso:
-El plan original era usar los archivos anuales por pais (endpoint
-/api/country/ o la descarga empaquetada en firms.modaps.eosdis.nasa.gov/country/).
-Al verificarlo en el sitio oficial de FIRMS (https://firms.modaps.eosdis.nasa.gov/api/)
-ese servicio aparece marcado explicitamente como "Feature currently not
-available" (con enlace a su pagina de interrupciones). Confirmado tambien
-al llamarlo directamente: devuelve "Invalid API call" (HTTP 400).
-
-Alternativa usada: la "Area API" (/api/area/csv/...), que si esta activa.
-Documentacion verificada en https://firms.modaps.eosdis.nasa.gov/api/area/:
-  - Formato: /api/area/csv/[MAP_KEY]/[SOURCE]/[AREA_COORDINATES]/[DAY_RANGE]/[DATE]
-  - AREA_COORDINATES = "west,south,east,north"
-  - DAY_RANGE: 1..5 (maximo 5 dias por peticion, limite duro de la API)
-  - SOURCE para datos historicos de calidad cientifica (no near-real-time):
-      MODIS_SP (MODIS Standard Processing)
-      VIIRS_SNPP_SP (VIIRS Suomi-NPP Standard Processing)
-
-Como no se puede pedir un rango de anios en una sola llamada, se pide en
-bloques de 5 dias (el maximo permitido) desde la fecha de inicio de cada
-sensor hasta hoy. Se pide la bounding box de todo el Peru (no cuesta mas
-que pedir solo el distrito: el "peso" de la peticion en la API depende de
-celdas de 60x60 grados, y tanto Peru completo como un distrito caben en una
-sola celda) y despues se recorta al distrito de forma local, tal como pide
-la consigna de la Fase 2.
-
-Cobertura temporal pedida (segun lo indicado en la tarea, verificado ademas
-contra la pagina de descargas de FIRMS que confirma el inicio real de cada
-sensor):
-  - MODIS Collection 6.1: datos reales desde 2000-11-01; se pide desde
-    2001-01-01 porque asi lo pidio la tarea explicitamente.
-  - VIIRS S-NPP 375m: datos desde 2012-01-20 (fecha real de inicio del
-    sensor operacional), coincide con lo pedido en la tarea ("2012 en
-    adelante").
 """
 import time
 from datetime import date, timedelta

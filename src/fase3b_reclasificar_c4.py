@@ -1,26 +1,7 @@
 """
 Fase 3b_c4 (pasos 1-2) - Version paralela de fase3b_reclasificar.py usando
-MapBiomas Coleccion 4 (hasta 2025) en vez de Coleccion 3 (hasta 2024).
+MapBiomas Coleccion 4 (hasta 2025).
 
-Como se tratan los anios t+1/t+2 que caen en o despues de 2026 (pedido
-explicito del encargo, punto 2): igual que el script original con la C3,
-se usa `.clip(upper=MAPBIOMAS_ANIO_MAX)`. Con MAPBIOMAS_ANIO_MAX=2025:
-  - Deteccion de 2023: t+1=2024 (real), t+2=2025 (real) -- ya no hay que
-    recortar NINGUNO de los dos (con C3, t+2=2025 SI se recortaba a 2024).
-  - Deteccion de 2024: t+1=2025 (real, NUEVO respecto a la C3, donde se
-    recortaba a 2024 = repetia t), t+2=2026 (no existe, se recorta a 2025
-    = repite t+1).
-  - Deteccion de 2025: t+1=2026 (no existe, se recorta a 2025 = repite t),
-    t+2=2027 (no existe, se recorta a 2025 = repite t+1, que a su vez
-    repite t). Es decir, para las detecciones del anio mas reciente (2025)
-    la ventana de verificacion "hacia adelante" queda vacia, exactamente
-    igual de limitada que como quedaban las de 2024 bajo la C3 -- el
-    problema simplemente se desplaza un anio, no desaparece (es inherente
-    a usar la ultima coleccion disponible, cualquiera que sea).
-Se reutiliza la columna "anios_verificados_adelante" ya presente en el
-script original (cuenta cuantos de t+1/t+2 son datos NUEVOS de verdad, no
-un recorte que repite un anio ya usado) para cuantificar esto explicitamente
-en el reporte final, sin necesidad de logica adicional.
 """
 import ee
 import geopandas as gpd
@@ -125,8 +106,10 @@ def main() -> None:
     clase_t1 = moda_por_anio(incendios, "anio_t1", "clase_t1")
     clase_t2 = moda_por_anio(incendios, "anio_t2", "clase_t2")
     incendios = incendios.merge(clase_t1, on="id", how="left").merge(clase_t2, on="id", how="left")
-    incendios["bosque_t1"] = incendios["clase_t1"].isin(BOSQUE_CODES)
-    incendios["bosque_t2"] = incendios["clase_t2"].isin(BOSQUE_CODES)
+    # La moda de Earth Engine a veces llega con decimales (3.0000000000000018
+    # en vez de 3): se redondea antes de comparar.
+    incendios["bosque_t1"] = incendios["clase_t1"].round().isin(BOSQUE_CODES)
+    incendios["bosque_t2"] = incendios["clase_t2"].round().isin(BOSQUE_CODES)
 
     incendios["categoria_extendida"] = incendios.apply(
         lambda f: "incendio_forestal" if (f["bosque_t1"] and f["bosque_t2"]) else "quema_deforestacion_extendida",

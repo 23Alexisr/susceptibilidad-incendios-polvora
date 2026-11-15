@@ -2,12 +2,6 @@
 Fase 5 (paso 2) - Predictores estaticos por celda: elevacion, pendiente y
 orientacion, calculados una sola vez (no cambian mes a mes ni año a año
 en la escala de tiempo de este estudio).
-
-Fuente: JAXA/ALOS/AW3D30/V4_1 (verificado en la Fase 4). Pendiente y
-orientacion se derivan con ee.Terrain sobre el mosaico de elevacion.
-Se usa el promedio del DEM de 30 m dentro de cada celda de 1 km
-(reduceRegions), no un solo pixel central, para que el valor represente
-mejor el terreno de toda la celda.
 """
 import ee
 import geopandas as gpd

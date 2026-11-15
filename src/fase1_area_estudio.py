@@ -1,18 +1,8 @@
 """
 Fase 1 - Area de estudio: limite del distrito de Polvora.
 
-Ambito cambiado de Tocache (ubigeo 221001) a Polvora (ubigeo 221003) por
-pedido explicito del usuario. Ambos distritos pertenecen a la misma
-provincia (Tocache) y region (San Martin).
 
-Fuente de datos: dataset "Peru - Subnational Administrative Boundaries"
-(COD-AB), publicado en el Humanitarian Data Exchange (HDX) por OCHA ROLAC,
-cuya fuente original es el Instituto Geografico Nacional del Peru (IGN).
-No usamos geoBoundaries porque su release "gbOpen" para PER (verificado en
-su API/repositorio de GitHub) solo llega hasta el nivel ADM2 (provincia);
-no publica ADM3 (distrito) para Peru, asi que no sirve para este caso.
-
-URL del dataset (verificada manualmente, no inventada):
+URL del dataset 
 https://data.humdata.org/dataset/cod-ab-per
 Recurso descargado: per_admin_boundaries.geojson.zip
   -> archivo per_admin3.geojson (1873 distritos, nivel ADM3)

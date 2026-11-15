@@ -3,21 +3,6 @@ Fase 5 (paso 5) - Predictores mensuales de clima y vegetacion por celda:
 precipitacion (CHIRPS), dias secos en el mes (CHIRPS), temperatura maxima
 y deficit de presion de vapor -VPD- (ERA5-Land), y NDMI (MODIS).
 
-Se calcula para TODOS los meses entre 2000-01 y 2024-12 (25 anios): el mes
-extra 2000 es necesario porque, por la regla de "sin fuga de datos", el
-predictor climatico del mes de enero 2001 usa el mes de DICIEMBRE 2000
-(mes anterior), no enero 2001 mismo.
-
-VPD (deficit de presion de vapor) se deriva con la formula de Tetens/Magnus
-a partir de temperature_2m y dewpoint_temperature_2m (temperatura media y
-punto de rocio mensual), ambas convertidas de Kelvin a Celsius.
-
-"Dias secos en el mes" es una SIMPLIFICACION de "dias secos consecutivos":
-se cuenta el numero de dias del mes con precipitacion < 1 mm, sin verificar
-que sean consecutivos NI encadenar con el mes anterior. Calcular la racha
-maxima real de dias secos consecutivos exigiria extraer la serie DIARIA
-completa por celda (miles de consultas extra a Earth Engine), lo cual excede
-el alcance de esta prueba de viabilidad. Queda anotado como limitacion.
 """
 import datetime as dt
 

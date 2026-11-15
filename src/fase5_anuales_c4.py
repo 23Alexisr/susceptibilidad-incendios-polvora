@@ -1,15 +1,6 @@
 """
 Fase 5_c4 (paso 4, version reducida) - Predictores anuales de uso de suelo
-por celda usando MapBiomas Coleccion 4, SOLO las 2 variables que requiere
-el modelo de 8 indicadores de la Fase 7 (clase_mapbiomas y
-pct_bosque_1km) -- a diferencia de fase5_anuales.py (C3), que ademas
-calculaba perdida de bosque (Hansen) y 2 distancias, no necesarias aqui.
-
-Anios calculados: 2011-2024 (14 anios). Son los que se usan como "anio
-t-1" (rezagado) de los anios de modelado 2012-2025 de la Fase 7_c4, para
-evitar fuga de datos.
-
-Bosque = codigos {3,4,5,6} (identico a la C3, ver fase3_filtro_bosque_c4.py).
+por celda usando MapBiomas Coleccion 4.
 """
 import sys
 

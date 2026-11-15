@@ -1,30 +1,8 @@
 """
-Fase 7 (paso 3) - Distancia de cada celda al centro poblado mas cercano:
+Fase 7 - Distancia de cada celda al centro poblado mas cercano:
 predictor NUEVO de la dimension "Antropogenica" de la matriz de
 operacionalizacion (variable 8 de 8), como proxy de zona residencial.
 
-Fuente PREFERIDA usada (INEI, geoespacial.inei.gob.pe): se obtuvo, no se
-sustituyo por OpenStreetMap. El enunciado mencionaba sige.inei.gob.pe/
-test/atlas/ o GeoIDEP como punto de partida: ese visor web (SIGE/Atlas) es
-una aplicacion Javascript antigua (OpenLayers + jQuery) sin un enlace de
-descarga directa localizable; en vez de eso se encontro el servicio real
-a traves del catalogo oficial de GeoIDEP (catalogo-nacional-de-servicios-
-web/servicio-de-descarga-wfs), que lista el servicio WFS que el propio
-INEI publica en su servidor geoespacial:
-
-    https://geoespacial.inei.gob.pe/Interoperabilidad/ig_centropoblado/wfs
-
-Capa: "Interoperabilidad:ig_centropoblado" (GeoServer del INEI). Cada
-feature trae, entre otros campos, "fuente": "INEI - CPV RESULTADOS" (Censos
-de Poblacion y Vivienda), confirmando que es informacion censal oficial
-del INEI, no un mirror de terceros.
-
-Se descargan solo los centros poblados dentro del bounding box del
-distrito + margen de ~0.3 grados (~33 km) por WFS (filtro BBOX), no la
-capa nacional completa, para no descargar datos innecesarios. Con ese
-margen el total es 753 centros poblados (ver impresion del script),
-suficiente para que el "mas cercano" de cualquier celda del distrito este
-garantizado dentro del margen (el distrito mide ~56 x 65 km).
 """
 import geopandas as gpd
 import pandas as pd

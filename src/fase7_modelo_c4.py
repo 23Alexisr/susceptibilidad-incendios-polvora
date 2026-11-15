@@ -27,7 +27,7 @@ from xgboost import XGBClassifier
 
 from config import DATA_PROCESSED_DIR, FIGURES_DIR, SEED
 
-ANIO_CORTE_TEST = 2022  # entrena 2012-2021, prueba 2022-2025 (antes 2022-2024)
+ANIO_CORTE_TEST = 2022  # entrena 2012-2021, prueba 2022-2025 
 TAMANO_BLOQUE_M = 5000
 N_FOLDS_ESPACIAL = 5
 N_MUESTRA_SHAP = 15000
