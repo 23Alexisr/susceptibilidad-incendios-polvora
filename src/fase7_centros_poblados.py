@@ -46,11 +46,16 @@ def main() -> None:
     minx, miny, maxx, maxy = distrito.total_bounds
     bbox = (minx - MARGEN_GRADOS, miny - MARGEN_GRADOS, maxx + MARGEN_GRADOS, maxy + MARGEN_GRADOS)
 
-    centros = descargar_centros_poblados(bbox)
-
+    # Si la descarga del INEI ya esta guardada se reutiliza, para que las
+    # distancias no cambien entre corridas. Borrar el archivo para volver a descargar.
     ruta_raw = CARPETA_SALIDA / "centros_poblados_polvora_bbox.gpkg"
-    centros.to_file(ruta_raw, driver="GPKG")
-    print(f"Guardado (crudo, fuente INEI): {ruta_raw}")
+    if ruta_raw.exists():
+        centros = gpd.read_file(ruta_raw)
+        print(f"Usando la descarga ya guardada (fuente INEI): {ruta_raw} ({len(centros)} centros poblados)")
+    else:
+        centros = descargar_centros_poblados(bbox)
+        centros.to_file(ruta_raw, driver="GPKG")
+        print(f"Guardado (crudo, fuente INEI): {ruta_raw}")
 
     print("\nMuestra de campos disponibles:", [c for c in centros.columns if c != "geometry"])
     if "ambito" in centros.columns:
@@ -64,10 +69,12 @@ def main() -> None:
     print("\nCalculando distancia euclidiana de cada centroide al centro poblado mas cercano (sjoin_nearest)...")
     cercano = gpd.sjoin_nearest(
         centroides_utm[["cell_id", "geometry"]],
-        centros_utm[["geometry"]],
+        centros_utm[["nombccpp", "idccpp", "geometry"]],
         distance_col="dist_zona_residencial_m",
     )
-    cercano = cercano.drop_duplicates(subset="cell_id")[["cell_id", "dist_zona_residencial_m"]]
+    # nombccpp e idccpp identifican al centro poblado mas cercano. Son solo para
+    # el visor: no son variables del modelo.
+    cercano = cercano.drop_duplicates(subset="cell_id")[["cell_id", "dist_zona_residencial_m", "nombccpp", "idccpp"]]
 
     print(f"\nResumen dist_zona_residencial_m (metros):")
     print(cercano["dist_zona_residencial_m"].describe())

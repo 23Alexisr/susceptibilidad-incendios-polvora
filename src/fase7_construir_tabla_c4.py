@@ -5,6 +5,8 @@ antes 2024). Version paralela de fase7_construir_tabla.py: NO modifica
 fase7_tabla_modelado.parquet (C3, 2012-2024), produce
 fase7_tabla_modelado_c4.parquet aparte.
 
+Etiqueta: por deteccion VIIRS forestal (ver construir_etiquetas_por_deteccion).
+Antes se etiquetaba una sola celda por evento.
 """
 import geopandas as gpd
 import numpy as np
@@ -16,40 +18,82 @@ ANIO_INICIO = 2012
 ANIO_FIN = 2025  # antes 2024
 UMBRAL_BOSQUE = 0.20
 ANIO_CORTE_TEST = 2022  # sin cambios: train 2012-2021, test ahora 2022-2025
+BOSQUE_CODES = [3, 4, 5, 6]  # codigos de bosque de MapBiomas, igual que en fase3_filtro_bosque_c4.py
 
 
-def construir_etiquetas_por_evento(
-    categorias=("incendio_forestal_no_estricto", "incendio_forestal_estricto"),
-) -> pd.DataFrame:
-    eventos = pd.read_csv(DATA_PROCESSED_DIR / "fase3b_eventos_c4.csv", parse_dates=["fecha_inicio"])
-    eventos["anio"] = eventos["fecha_inicio"].dt.year
-    eventos["mes"] = eventos["fecha_inicio"].dt.month
+def construir_etiquetas_por_deteccion() -> pd.DataFrame:
+    """Etiqueta por deteccion: una celda-mes es positiva si contiene al menos
+    una deteccion VIIRS forestal (bosque en t-1, t, t+1 y t+2), usando la celda
+    y el mes de la propia deteccion. No usa la categoria del evento.
 
-    extendida = eventos[eventos["categoria_dominante"].isin(categorias)].copy()
-    con_viirs = extendida[extendida["sensores"].str.contains("viirs_snpp")]
-    con_viirs = con_viirs[(con_viirs["anio"] >= ANIO_INICIO) & (con_viirs["anio"] <= ANIO_FIN)]
-    print(f"Eventos extendidos (C4) con participacion VIIRS, {ANIO_INICIO}-{ANIO_FIN}: {len(con_viirs)} (de {len(extendida)} extendidos totales)")
+    Lectura local, sin Earth Engine: las clases de MapBiomas ya estan guardadas
+    en firms_clasificado_c4.gpkg (t-1, t) y fase3b_incendios_depurados_c4.csv
+    (t+1, t+2). Se redondean aqui porque la moda de Earth Engine a veces llega
+    con decimales (3.0000000000000018 en vez de 3).
+    """
+    det = gpd.read_file(DATA_PROCESSED_DIR / "firms_clasificado_c4.gpkg", layer="detecciones_clasificadas")
+    det = det.reset_index(drop=True)
+    det["acq_date"] = pd.to_datetime(det["acq_date"])
 
-    puntos = gpd.GeoDataFrame(
-        con_viirs, geometry=gpd.points_from_xy(con_viirs["lon"], con_viirs["lat"]), crs="EPSG:4326"
-    ).to_crs("EPSG:32718")
+    # fase3b_reclasificar_c4.py solo calcula t+1 y t+2 para las detecciones que
+    # la fase 3 marco como 'incendio_forestal', y las guarda en el mismo orden.
+    dep = pd.read_csv(DATA_PROCESSED_DIR / "fase3b_incendios_depurados_c4.csv")
+    idx = det.index[det["categoria"] == "incendio_forestal"]
+    alineado = (
+        len(idx) == len(dep)
+        and (det.loc[idx, "sensor"].to_numpy() == dep["sensor"].to_numpy()).all()
+        and (det.loc[idx, "acq_date"].to_numpy() == pd.to_datetime(dep["acq_date"]).to_numpy()).all()
+    )
+    if not alineado:
+        raise SystemExit(
+            "fase3b_incendios_depurados_c4.csv no corresponde a firms_clasificado_c4.gpkg. "
+            "Volver a correr fase3b_reclasificar_c4.py."
+        )
+    det["verificada_adelante"] = False
+    det.loc[idx, "verificada_adelante"] = True
+    det["clase_t1"] = np.nan
+    det["clase_t2"] = np.nan
+    det.loc[idx, "clase_t1"] = dep["clase_t1"].to_numpy()
+    det.loc[idx, "clase_t2"] = dep["clase_t2"].to_numpy()
+
+    def es_bosque(columna):
+        return det[columna].round().isin(BOSQUE_CODES)
+
+    bosque_antes_y_durante = es_bosque("clase_tm1") & es_bosque("clase_t")
+    det["forestal"] = bosque_antes_y_durante & es_bosque("clase_t1") & es_bosque("clase_t2")
+
+    en_periodo = (
+        (det["sensor"] == "viirs_snpp")
+        & (det["acq_date"].dt.year >= ANIO_INICIO)
+        & (det["acq_date"].dt.year <= ANIO_FIN)
+    )
+    sin_verificar = int((en_periodo & bosque_antes_y_durante & ~det["verificada_adelante"]).sum())
+    viirs = det[en_periodo & det["forestal"]].copy()
+    viirs["anio"] = viirs["acq_date"].dt.year
+    viirs["mes"] = viirs["acq_date"].dt.month
+    print(f"Detecciones VIIRS {ANIO_INICIO}-{ANIO_FIN}: {int(en_periodo.sum())}; forestales (bosque en t-1, t, t+1 y t+2): {len(viirs)}")
+    if sin_verificar > 0:
+        print(
+            f"AVISO: {sin_verificar} detecciones VIIRS son bosque en t-1 y t pero no tienen t+1/t+2 calculado "
+            "(quedan fuera). Se resuelve al volver a correr fase3_filtro_bosque_c4.py y fase3b_reclasificar_c4.py."
+        )
 
     celdas = gpd.read_file(DATA_PROCESSED_DIR / "grilla_1km.gpkg", layer="celdas_utm")
-    union = gpd.sjoin(puntos, celdas, how="inner", predicate="within")
-    print(f"Eventos que cayeron dentro de alguna celda: {len(union)}")
+    union = gpd.sjoin(viirs.to_crs("EPSG:32718"), celdas, how="inner", predicate="within")
+    print(f"Detecciones forestales que cayeron dentro de alguna celda: {len(union)}")
 
     etiquetas = (
         union.groupby(["cell_id", "anio", "mes"])
         .size()
-        .reset_index(name="n_eventos_incendio_forestal")
+        .reset_index(name="n_detecciones_incendio_forestal")
     )
     etiquetas["positivo"] = 1
     return etiquetas
 
 
 def main() -> None:
-    print("--- Construyendo etiquetas por evento (C4, periodo 2012-2025) ---")
-    etiquetas = construir_etiquetas_por_evento()
+    print("--- Construyendo etiquetas por deteccion VIIRS (C4, periodo 2012-2025) ---")
+    etiquetas = construir_etiquetas_por_deteccion()
     print(f"Combinaciones celda-anio-mes positivas: {len(etiquetas)}")
 
     print("\n--- Cargando predictores (C4 + 2025) ---")
@@ -76,7 +120,8 @@ def main() -> None:
     print(f"NDVI combinado: {ndvi['anio'].min()}-{ndvi['anio'].max()}")
 
     dist_carretera = pd.read_csv(DATA_PROCESSED_DIR / "fase7_dist_carretera.csv")
-    dist_residencial = pd.read_csv(DATA_PROCESSED_DIR / "fase7_dist_centro_poblado.csv")
+    # el CSV tambien trae el nombre del centro poblado (solo para el visor): no entra a la tabla
+    dist_residencial = pd.read_csv(DATA_PROCESSED_DIR / "fase7_dist_centro_poblado.csv")[["cell_id", "dist_zona_residencial_m"]]
 
     celdas_ids = estaticos["cell_id"].unique()
     filas_esqueleto = [

@@ -235,6 +235,8 @@ def main():
             "bosque": round(float(g0["pct_bosque_1km"]) * 100, 1), "clase": int(g0["clase_mapbiomas"]),
             "elev": round(float(g0["elevacion"])), "pend": round(float(g0["pendiente"]), 1),
             "dcar": round(float(g0["dist_carretera_m"])), "dres": round(float(g0["dist_zona_residencial_m"])),
+            # nombre del centro poblado mas cercano: solo para el visor, no es variable del modelo
+            "pob": str(g0["nombccpp"]).title() if "nombccpp" in grupo.columns and pd.notna(g0["nombccpp"]) else None,
             "p": [round(float(v), 5) for v in grupo["probabilidad"]],
             "n": [int(v) for v in grupo["nivel"]],
             "h": [int(v) for v in grupo["incendios_historicos"]],
@@ -244,7 +246,24 @@ def main():
             "f": [[[indicadores.index(fila[f"factor{r}"]), round(float(fila[f"shap{r}"]), 4)] for r in range(1, 4)]
                   for _, fila in grupo.iterrows()],
         })
+    # Metricas de validacion del algoritmo final (entrenado con 2012-2021), para el modo tecnico del visor
+    comp = pd.read_csv(RESULTADOS_DIR / "tabla_tratamiento_vs_control.csv")
+    comp = comp[comp["tratamiento"] == NOMBRES[final]].set_index("metrica")
+    prueba = tabla[tabla["anio"] >= 2022]
+    metricas = {
+        "auc_roc_prueba": round(float(comp.loc["AUC-ROC", "prueba_temporal"]), 4),
+        "auc_roc_espacial": round(float(comp.loc["AUC-ROC", "espacial_media"]), 4),
+        "auc_roc_espacial_desv": round(float(comp.loc["AUC-ROC", "espacial_desv"]), 4),
+        "auc_pr_prueba": round(float(comp.loc["AUC-PR", "prueba_temporal"]), 4),
+        "auc_pr_espacial": round(float(comp.loc["AUC-PR", "espacial_media"]), 4),
+        "auc_pr_espacial_desv": round(float(comp.loc["AUC-PR", "espacial_desv"]), 4),
+        "celdas_mes": int(len(tabla)), "positivos": int(tabla["positivo"].sum()),
+        "prevalencia": round(float(tabla["positivo"].mean()), 6),
+        "prevalencia_prueba": round(float(prueba["positivo"].mean()), 6),
+        "positivos_prueba": int(prueba["positivo"].sum()),
+    }
     meta = {
+        "metricas": metricas,
         "modelo": NOMBRES[final], "escala_shap": "log-odds" if final == "xgboost" else "probabilidad",
         "niveles": NIVELES, "colores": COLORES, "cortes": [round(v, 5) for v in limites], "meses": MESES,
         "claves": indicadores,

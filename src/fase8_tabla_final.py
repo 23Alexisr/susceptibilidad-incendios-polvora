@@ -34,7 +34,7 @@ RESULTADOS_DIR.mkdir(exist_ok=True)
 
 ANIO_CORTE_TEST = 2022
 FILAS_ESPERADAS = 351_732
-POSITIVOS_ESPERADOS = 1_455
+POSITIVOS_ESPERADOS = 1_739  # etiqueta por deteccion VIIRS forestal (antes 1 455, por evento)
 INDICADORES = [
     "precip_mm", "temp_max_c", "elevacion", "pendiente",
     "ndvi", "clase_mapbiomas", "dist_carretera_m", "dist_zona_residencial_m",
